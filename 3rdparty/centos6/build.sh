@@ -39,6 +39,7 @@ baseurl="http://downloads.paradigm4.com/centos6.3/3rdparty_sources"
 
 # original URLs stored in ${base_url}/original.txt
 sources="
+mpich2-1.2.1.tar.gz
 boost_1_54_0.tar.bz2
 libpqxx-3.1.tar.gz
 cmake-2.8.10.tar.gz

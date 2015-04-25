@@ -47,8 +47,6 @@ if test ! -d "/opt/scidb/${SCIDB_VER}/3rdparty/boost/lib"; then
     exit 1
 fi
 
-export LD_LIBRARY_PATH="${SCIDB_DIR}/lib:/opt/scidb/${SCIDB_VER}/3rdparty/boost/lib"
-
 case $1 in
         start)
             echo "Starting shim"

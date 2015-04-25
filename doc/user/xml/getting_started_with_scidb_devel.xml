@@ -474,8 +474,8 @@ quit or exit   - End iquery session</programlisting></para>
     <para>Note the following:<itemizedlist>
         <listitem>
           <para>Your version of iquery must match the version of SciDB. For
-          example, if your SciDB installation is at version 14.7, you must
-          download and install iquery version 14.7.</para>
+          example, if your SciDB installation is at version 14.8, you must
+          download and install iquery version 14.8.</para>
         </listitem>
 
         <listitem>
@@ -545,8 +545,8 @@ sudo yum install scidb-&scidb_version;-utils</programlisting></para>
       <step>
         <para>Set the SciDB environment variables in the user
         environment.<programlisting>export SCIDB_VER=&scidb_version; 
-export PATH="$PATH:/opt/scidb/$SCIDB_VER/bin:/opt/scidb/$SCIDB_VER/share/scidb"
-export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/opt/scidb/$SCIDB_VER/lib"</programlisting></para>
+export PATH="$PATH:/opt/scidb/$SCIDB_VER/bin:/opt/scidb/$SCIDB_VER/share/scidb"</programlisting></para>
+
       </step>
 
       <step>

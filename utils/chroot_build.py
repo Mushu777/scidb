@@ -109,7 +109,7 @@ class UbuntuChroot():
     distroname = 'ubuntu'
     pbuilder_tgz_dir='/var/cache/pbuilder'
     ubuntu_mirror='deb http://archive.ubuntu.com/ubuntu/ %s restricted main multiverse universe'
-    scidb_3rdparty_mirror='deb http://downloads.paradigm4.com/ ubuntu12.04/3rdparty/'
+    scidb_3rdparty_mirror='deb https://downloads.paradigm4.com/ ubuntu12.04/3rdparty/'
 
     def __init__(self, release, arch, temp_dir):
         info('Will use pbuilder for chrooting. Checking environment...')
@@ -118,6 +118,9 @@ class UbuntuChroot():
         self.release = release
         self.arch = arch
         self.tgz = self.pbuilder_tgz_dir+'/'+release+'-'+arch+'.tgz'
+        # trusty is Ubuntu 14.04 release. precise is Ubuntu 12.04 release.
+        if self.release == "trusty":
+            self.scidb_3rdparty_mirror='deb https://downloads.paradigm4.com/ ubuntu14.04/3rdparty/'
         self.mirror = '|'.join([(self.ubuntu_mirror % release), self.scidb_3rdparty_mirror])
         self.temp_dir=temp_dir
         self.logfile = os.path.join(self.temp_dir,'pbuilder.log')
@@ -127,6 +130,7 @@ class UbuntuChroot():
             '--basetgz', self.tgz,
             '--architecture', self.arch,
             '--othermirror', self.mirror,
+            '--hookdir', '/var/cache/pbuilder/hook.d',
             '--allow-untrusted',
             '--distribution', self.release,
             '--override-config',
@@ -219,6 +223,7 @@ class CentOSChroot():
             '--root', self.chroot,
             '--arch', self.arch,
             '--resultdir', buildresult,
+                    '--no-cleanup-after',
             sources]
         info("Building %s in %s" % (sources, self.chroot))
         try:
